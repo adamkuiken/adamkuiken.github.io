@@ -39,12 +39,17 @@ I created a Virtual Relaity, multi-user, robotic control simulation. I used the 
 **Results**
 I completed building the simulation with the aforementioned specifications as well as documented my process for abstraction and further development. 
 ```
-### Projects
+### [Projects](https://github.com/adamkuiken)
 
-### Stock and Cryptocurrency Analysis
+### [Stock and Cryptocurrency Analysis](https://github.com/adamkuiken/Stock_Crypto_Analysis)
+I built a [ coinmarketcap.com webscrapper](https://github.com/adamkuiken/CryptoScrapper) that compiled daily open,close,volume,high, and low values for 1year, of all of the coins that were tradeable on coinbase. Then I performed various statistical analysis and machine learning models to the data to find trading patterns. 
 
-### DNA Machine Learning Analysis
+### [DNA Machine Learning Analysis](https://github.com/adamkuiken/Analysis-of-DNA-damage)
+I used various machine learning models to analyze genetic data in order to predict cancer in smokers. The data was collected from [The Cancer Genome Atlas Program](https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga).
 
-### Fusion360 Pattern Script
+### [Fusion360 Pattern Script](https://github.com/adamkuiken/Fusion360-pattern-Script)
+I am in the process of developing an add-on for fusion360 that creates a volumetric patterned cut through an object. This can be used to optimize development workflows in the additive manufacturing industry, as well as others. 
 
-### Building Vitality
+For example, if one would like to model flooring wiht a specific til pattern, this tool would be able to take the models of the flooring and cut the pattern of the tiles into the flooring, thus making it simple to calculate the number of tiles and other necessary metrics. 
+
+### [Building Vitality](buildingvitality.org)
