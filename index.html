@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adam Kuiken | Portfolio</title>
+
+  <style>
+    :root{
+      --bg: #305C3A;
+      --text: #E9F0EC;
+      --accent: #AB8509;
+      --panel: rgba(233,240,236,0.08);
+      --panel-2: rgba(233,240,236,0.06);
+      --border: rgba(233,240,236,0.14);
+      --shadow: 0 16px 40px rgba(0,0,0,0.18);
+      --radius: 18px;
+      --radius-sm: 14px;
+      --max: 1100px;
+      --nav-h: 72px;
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a{
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: 160ms ease;
+    }
+    a:hover{ border-bottom-color: var(--accent); }
+
+    /* NAV */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      background: rgba(48, 92, 58, 0.78);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner{
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 180px;
+    }
+    .brand-mark{
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), rgba(171,133,9,0.35));
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(233,240,236,0.18);
+    }
+    .brand-text{
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .brand-text strong{ font-size: 14px; letter-spacing: 0.4px; }
+    .brand-text span{ font-size: 12px; opacity: 0.9; }
+
+    .menu{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .menu button{
+      appearance: none;
+      border: 1px solid rgba(233,240,236,0.18);
+      background: rgba(233,240,236,0.06);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.2px;
+      transition: 180ms ease;
+      white-space: nowrap;
+    }
+    .menu button:hover{
+      transform: translateY(-1px);
+      border-color: rgba(171,133,9,0.55);
+      background: rgba(171,133,9,0.12);
+    }
+    .menu button:active{ transform: translateY(0px); }
+
+    /* LAYOUT */
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+    section{
+      scroll-margin-top: calc(var(--nav-h) + 18px);
+      padding: 42px 0;
+    }
+    .section-title{
+      font-size: 22px;
+      letter-spacing: 0.3px;
+      margin: 0 0 16px;
+      text-align: center;
+    }
+    .section-sub{
+      text-align: center;
+      opacity: 0.9;
+      margin: 0 auto 22px;
+      max-width: 760px;
+    }
+
+    /* HERO */
+    .hero{
+      padding: 22px 0 34px;
+    }
+    .hero-card{
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(233,240,236,0.16);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .hero-image{
+      height: 360px;
+      background:
+        radial-gradient(1000px 500px at 20% 20%, rgba(171,133,9,0.25), transparent 55%),
+        radial-gradient(700px 500px at 80% 40%, rgba(233,240,236,0.16), transparent 55%),
+        linear-gradient(135deg, rgba(0,0,0,0.18), rgba(0,0,0,0.0)),
+        url("assets/images/keyboard.png");
+        /*url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2000&q=80");*/
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .hero-overlay{
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(48,92,58,0.10), rgba(48,92,58,0.70));
+    }
+    .hero-content{
+      padding: 22px 22px 26px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      align-items: center;
+    }
+    .hero-content h1{
+      margin: 0 0 8px;
+      font-size: 28px;
+      letter-spacing: 0.4px;
+    }
+    .hero-content p{
+      margin: 0;
+      opacity: 0.9;
+      max-width: 62ch;
+    }
+    .hero-cta{
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(233,240,236,0.18);
+      background: rgba(233,240,236,0.06);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 12px;
+      transition: 180ms ease;
+      user-select: none;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(171,133,9,0.55);
+      background: rgba(171,133,9,0.12);
+    }
+    .btn.primary{
+      border-color: rgba(171,133,9,0.60);
+      background: rgba(171,133,9,0.18);
+    }
+
+    /* ABOUT */
+    .about-card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(233,240,236,0.16);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 0.25fr 0.75fr;
+      gap: 18px;
+      align-items: center;
+    }
+    .profile{
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(233,240,236,0.18);
+      background:
+        radial-gradient(500px 400px at 40% 30%, rgba(171,133,9,0.25), transparent 55%),
+        url("https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=1200&q=80");
+      background-size: cover;
+      background-position: center;
+    }
+    .bio{
+      border-radius: var(--radius);
+      background: var(--panel-2);
+      border: 1px solid rgba(233,240,236,0.12);
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .bio p{ margin: 0; opacity: 0.95; }
+
+    /* CAREER */
+    .career{
+      display: grid;
+      gap: 14px;
+    }
+    .career-row{
+      border-radius: var(--radius);
+      border: 1px solid rgba(233,240,236,0.16);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 16px;
+      align-items: center;
+    }
+    .career-row.alt{
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+    .career-media{
+      width: 100%;
+      height: 170px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(233,240,236,0.18);
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .career-media::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.28));
+    }
+    .career-text{
+      border-radius: var(--radius);
+      background: var(--panel-2);
+      border: 1px solid rgba(233,240,236,0.12);
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .career-text h3{
+      margin: 0 0 6px;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+    }
+    .career-text p{
+      margin: 0;
+      opacity: 0.92;
+      font-size: 13px;
+    }
+
+    /* SKILLS */
+    .skills-card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(233,240,236,0.16);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      text-align: center;
+    }
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      border: none;
+      margin: 10px auto 0;
+      table-layout: fixed;
+    }
+    th, td{
+      border: none;                /* borderless tables */
+      padding: 10px 8px;
+      text-align: center;          /* center-aligned elements */
+      vertical-align: middle;
+      word-wrap: break-word;
+    }
+    thead th{
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      color: var(--text);
+      opacity: 0.95;
+    }
+    tbody td{
+      font-size: 13px;
+      opacity: 0.93;
+    }
+    .row-chip{
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(233,240,236,0.06);
+      border: 1px solid rgba(233,240,236,0.12);
+      min-width: 160px;
+    }
+
+    /* CERTS */
+    .certs-area{
+      margin-top: 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(233,240,236,0.16);
+      background: var(--panel-2);
+      padding: 18px;
+      text-align: center;
+    }
+    .cert-buttons{
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .cert-btn{
+      border-radius: 999px;
+      border: 1px solid rgba(171,133,9,0.55);
+      background: rgba(171,133,9,0.14);
+      padding: 14px 12px;
+      text-align: center;
+      font-size: 13px;
+      cursor: pointer;
+      transition: 180ms ease;
+      color: var(--text);
+    }
+    .cert-btn:hover{
+      transform: translateY(-1px);
+      background: rgba(171,133,9,0.22);
+      border-color: rgba(171,133,9,0.85);
+    }
+
+    /* CONTACT */
+    .contact-card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(233,240,236,0.16);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      text-align: center;
+    }
+    .contact-links{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 12px;
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(233,240,236,0.18);
+      background: rgba(233,240,236,0.06);
+      transition: 180ms ease;
+      font-size: 12px;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(171,133,9,0.55);
+      background: rgba(171,133,9,0.12);
+    }
+    .consulting-panel{
+      margin-top: 14px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(233,240,236,0.12);
+      background: rgba(233,240,236,0.06);
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .consulting-panel b{
+      color: var(--text);
+      border-bottom: 1px solid rgba(171,133,9,0.55);
+      padding-bottom: 2px;
+    }
+
+    /* FOOTER */
+    footer{
+      padding: 20px 0 32px;
+      text-align: center;
+      opacity: 0.85;
+      font-size: 12px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px){
+      .hero-content{
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-cta{ justify-content: center; }
+      .about-card{
+        grid-template-columns: 1fr;
+      }
+      .career-row, .career-row.alt{
+        grid-template-columns: 1fr;
+      }
+      .cert-buttons{
+        grid-template-columns: 1fr;
+      }
+      .brand{ min-width: unset; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-text">
+          <strong>Adam Kuiken</strong>
+          <span>Software Consultant • Engineer • Artist</span>
+        </div>
+      </div>
+
+      <nav class="menu" aria-label="Main navigation">
+        <button data-target="home">Home</button>
+        <button data-target="about">About Me</button>
+        <button data-target="career">My Career</button>
+        <button data-target="skills">My Skills</button>
+        <button data-target="certifications">Certifications</button>
+        <button data-target="contact">Get in Touch</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HOME / HERO -->
+  <main>
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-image" role="img" aria-label="Hero background image">
+            <div class="hero-overlay"></div>
+          </div>
+
+          <div class="hero-content">
+            <div>
+              <h1>Building Solutions and Art with a Passion for Creation</h1>
+              <p>
+                Results-Oriented Software Engineer | Expert in Delivering Scalable Solutions and Driving Innovation |
+                Transforming Ideas into Reality
+
+                Multimedia Artist & Maker | Wood, Glass, Laser Etching & Experimental Design |
+                Turning Ideas into Tangible Art
+              </p>
+            </div>
+
+            <div class="hero-cta">
+              <button class="btn primary" data-target="contact">Contact Me</button>
+              <button class="btn" data-target="career">View My Work</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-sub">
+          Software Engineer, Artist, & Soccer Player
+        </p>
+
+        <div class="about-card">
+          <div class="profile" aria-label="Profile photo"></div>
+
+          <div class="bio">
+            <p>
+              Hi my name is Adam. I have a B.S. in Computer Science from The Pennsylvania State University. 
+              I'm and avid A.S. Roma fan and love to play soccer (football) any time I get the chance. 
+              I enjoy learning new mediums for artistic expression. I have worked with Wood, stained-glass, additive manufacturing, metals, and good-old pencil and paper.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MY CAREER -->
+    <section id="career">
+      <div class="container">
+        <h2 class="section-title">My Career</h2>
+        <p class="section-sub">
+          I have been fortunate enough to work for some great organizations throughout my career:
+        </p>
+
+        <div class="career">
+          <!-- Row 1 -->
+          <div class="career-row">
+            <div class="career-media" style="background-image:url('https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=80');"></div>
+            <div class="career-text">
+              <h3>Intern / Shirley Ryan AbilityLab / Chicago, IL</h3>
+              <p>
+                • Engineered an augmented reality-driven prosthetic arm prototype for amputees by merging Python and C# code with muscle sensor technology within the Unity environment for optimized functionality and user control.
+                • Utilized Microsoft HoloLens to visualize the real-time movement of the virtual prosthesis, superimposing digital assets and models intothe wearer's field of view.</p>
+            </div>
+          </div>
+
+          <!-- Row 2 (alt) -->
+          <div class="career-row alt">
+            <div class="career-text">
+              <h3>Intern / Institute for Human and Machine Cognition (IHMC) / Pensacola, FL</h3>
+              <p>
+                • Developed a multi-user, virtual reality robotics control simulation leveraging expertise in physics, networking, programming, product development, and ROS integration.
+                • Architected exoskeleton control simulations in collaboration with a cross-disciplinary team of engineers.
+                • Enabled real-time user interaction with physical robotic exoskeleton through the creation of an innovative control schema.</p>
+            </div>
+            <div class="career-media" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80');"></div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="career-row">
+            <div class="career-media" style="background-image:url('https://images.unsplash.com/photo-1526378722370-8bda36c0f8a6?auto=format&fit=crop&w=1600&q=80');"></div>
+            <div class="career-text">
+              <h3>Student Consultant / Ukwenza VR / Nairobi, Kenya</h3>
+              <p>
+                • Elevated student learning experience through the design and execution of an immersive educational VR program.
+                • Conducted research on various product deployment strategies, ensuring streamlined processes and impactful outcomes.
+                • Offered tailored guidance across business and engineering disciplines to a local startup as a valued member of a multidisciplinary team.
+                • Built a Virtual Reality educational app to foster environmental conservation awareness among children.
+                • Improved product adoption rate by refining functionality through collaborative efforts with stakeholders.
+                • Gained valuable user feedback for product refinement by leading test trials of virtual reality experiences in three Kenyan schools.</p>
+            </div>
+          </div>
+
+          <!-- Row 4 (alt) -->
+          <div class="career-row alt">
+            <div class="career-text">
+              <h3>Software Consultant / EnVista Corporation</h3>
+              <p>
+                • Employed Power BI to craft compelling reports, integrating dynamic visualizations for thorough data analysis.
+                • Automated business operations by engineering advanced AI solutions through the utilization of APIs.
+                • Drove business success by enhancing decision-making processes through ML models, including sales forecasting algorithms.
+                • Enabled uninterrupted data flow across diverse systems and platforms by executing seamless data migrations, bolstering client business protocols.
+                • Maximized client satisfaction by creating client-centric financial reports and addressing diverse business requirements through collaborative consultation.
+                • Facilitated executive decision-making by delivering insights into company finances through internal reporting initiatives.</p>
+            </div>
+            <div class="career-media" style="background-image:url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1600&q=80');"></div>
+          </div>
+
+          <!-- Row 5 -->
+          <div class="career-row">
+            <div class="career-media" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80');"></div>
+            <div class="career-text">
+              <h3>Role / Company (Placeholder)</h3>
+              <p>
+                • Developed organization-wide reporting and analytics solutions, enabling growth tracking and performance benchmarking.
+                • Aggregated corporate and industry data to deliver intuitive analytics, empowering long-term strategic decision-making.
+                • Collaborated with a cross-functional team to enhance machine learning algorithms, improving model accuracy by 20% to meet stakeholder requirements.
+                • Leveraged a full-stack skillset to design and deploy a server-client web application integrating a custom AI chat model.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MY SKILLS + CERTIFICATIONS -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">My Skills</h2>
+        <p class="section-sub">
+          ________________________________________________________________________________
+        </p>
+
+        <div class="skills-card">
+          <table aria-label="Skills table">
+            <thead>
+              <tr>
+                <th>Professional</th>
+                <th>Technical / Analytical</th>
+                <th>Creative</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 10 placeholder rows -->
+              <tr>
+                <td><span class="row-chip">Communication</span></td>
+                <td><span class="row-chip">Python</span></td>
+                <td><span class="row-chip">JavaScript</span></td>
+              </tr>
+              <tr>
+                <td><span class="row-chip">Leadership</span></td>
+                <td><span class="row-chip">C#</span></td>
+                <td><span class="row-chip">HTML</span></td>
+              </tr>
+              <tr>
+                <td><span class="row-chip">Project Management</span></td>
+                <td><span class="row-chip">Java</span></td>
+                <td><span class="row-chip">CSS</span></td>
+              </tr>
+              <tr>
+                <td><span class="row-chip">Client Collaboration</span></td>
+                <td><span class="row-chip">C</span></td>
+                <td><span class="row-chip">ReactJS</span></td>
+              </tr>
+              <tr>
+                <td><span class="row-chip">Problem Solving</span></td>
+                <td><span class="row-chip">R</span></td>
+                <td><span class="row-chip">Unity3D Engine</span></td>
+              </tr>
+              <tr>
+                <td><span class="row-chip">Strategic Thinking</span></td>
+                <td><span class="row-chip">SQL</span></td>
+                <td><span class="row-chip">Fusion360 CAD</span></td>
+              </tr>
+              <tr>
+                <td><span class="row-chip">Ownership</span></td>
+                <td><span class="row-chip">TypeScript</span></td>
+                <td><span class="row-chip">Arduino</span></td>
+              </tr>
+              <tr>
+                <td><span class="row-chip">Time Management</span></td>
+                <td><span class="row-chip">Linux</span></td>
+                <td><span class="row-chip">Power BI</span></td>
+              </tr>
+              <tr>
+                <td><span class="row-chip">Mentorship</span></td>
+                <td><span class="row-chip">Azure</span></td>
+                <td><span class="row-chip">Git</span></td>
+              </tr>
+              <tr>
+                <td><span class="row-chip">Adaptability</span></td>
+                <td><span class="row-chip">DAX · NodeJS · REST</span></td>
+                <td><span class="row-chip">Data Visualization</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div id="certifications" class="certs-area">
+            <h2 class="section-title" style="margin: 0;">Certifications</h2>
+            <div class="cert-buttons">
+                <a
+                    class="cert-btn"
+                    href="https://learn.microsoft.com/en-us/credentials/certifications/data-analyst-associate/?practice-assessment-type=certification"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >
+                    PowerBI Data Analyst Associate
+                </a>
+                <a
+                    class="cert-btn"
+                    href="https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?practice-assessment-type=certification"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >
+                    Azure AI Engineer Associate
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GET IN TOUCH -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-sub">
+          Links for email, phone, LinkedIn, and GitHub, plus a consulting inquiries panel.
+        </p>
+
+        <div class="contact-card">
+          <div class="contact-links">
+            <a class="pill" href="mailto:adkuiken@gmail.com">Email</a>
+            <a class="pill" href="tel:+17086740833">Phone</a>
+            <a class="pill" href="https://www.linkedin.com/in/adam-kuiken/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="pill" href="https://github.com/adamkuiken" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+
+        <!-- Hide Consultancy until page is up 
+          <div class="consulting-panel">
+            <div>
+              For consulting inquiries please go to
+              <a href="https://example.com" target="_blank" rel="noreferrer"><b>Consulting Company</b></a>
+              or reach me at
+              <a href="mailto:consulting@email.com"><b>consulting@email.com</b></a>.
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">© <span id="year"></span> Adam Kuiken • Built with HTML/CSS</div>
+    </footer>
+  </main>
+
+  <script>
+    // Smooth scrolling with correct offset for sticky nav (works even if scroll-behavior is unsupported)
+    const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+
+    function scrollToId(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      const y = el.getBoundingClientRect().top + window.scrollY - navHeight - 14;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+
+    document.querySelectorAll('[data-target]').forEach(btn => {
+      btn.addEventListener('click', () => scrollToId(btn.getAttribute('data-target')));
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
