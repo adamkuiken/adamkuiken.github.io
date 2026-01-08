@@ -451,6 +451,45 @@
       border: 1px solid rgba(233,240,236,0.12);
       min-width: 160px;
     }
+    /* Skills table mobile optimization */
+    @media (max-width: 720px){
+      .skills-card table{
+        width: 100%;
+      }
+
+      .skills-card thead{
+        display: none; /* hide headers on mobile */
+      }
+
+      .skills-card tbody tr{
+        display: block;
+        margin: 12px 0;
+        border-radius: var(--radius);
+        background: rgba(233,240,236,0.06);
+        border: 1px solid rgba(233,240,236,0.12);
+        padding: 10px;
+      }
+
+      .skills-card tbody td{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 8px 6px;
+      }
+
+      /* Label each cell with its column heading using data-label */
+      .skills-card tbody td::before{
+        content: attr(data-label);
+        font-size: 12px;
+        opacity: 0.85;
+        letter-spacing: 0.2px;
+      }
+
+      .row-chip{
+        width: 100%;
+        min-width: unset;
+      }
+    }
 
     /* CERTS */
     .certs-area{
@@ -738,56 +777,128 @@
             </thead>
             <tbody>
               <!-- 10 placeholder rows -->
-              <tr>
-                <td><span class="row-chip">Stakeholder Communication</span></td>
-                <td><span class="row-chip">Python</span></td>
-                <td><span class="row-chip">JavaScript</span></td>
-              </tr>
-              <tr>
-                <td><span class="row-chip">Cross-Functional Collaboration</span></td>
-                <td><span class="row-chip">C#</span></td>
-                <td><span class="row-chip">HTML</span></td>
-              </tr>
-              <tr>
-                <td><span class="row-chip">Leadership Without Authority</span></td>
-                <td><span class="row-chip">Java</span></td>
-                <td><span class="row-chip">CSS</span></td>
-              </tr>
-              <tr>
-                <td><span class="row-chip">Strategic Decision-Making</span></td>
-                <td><span class="row-chip">C</span></td>
-                <td><span class="row-chip">ReactJS</span></td>
-              </tr>
-              <tr>
-                <td><span class="row-chip">Root Cause Analysis</span></td>
-                <td><span class="row-chip">R</span></td>
-                <td><span class="row-chip">TypeScript</span></td>
-              </tr>
-              <tr>
-                <td><span class="row-chip">Analytical Thinking</span></td>
-                <td><span class="row-chip">SQL</span></td>
-                <td><span class="row-chip">Fusion360 CAD</span></td>
-              </tr>
-              <tr>
-                <td><span class="row-chip">Ownership Mentality</span></td>
-                <td><span class="row-chip">Unity3D Engine</span></td>
-                <td><span class="row-chip">Arduino</span></td>
-              </tr>
-              <tr>
-                <td><span class="row-chip">Engineering Design</span></td>
-                <td><span class="row-chip">Linux</span></td>
-                <td><span class="row-chip">Power BI</span></td>
-              </tr>
-              <tr>
-                <td><span class="row-chip">Prioritization & Time Management</span></td>
-                <td><span class="row-chip">Azure</span></td>
-                <td><span class="row-chip">Git</span></td>
-              </tr>
-              <tr>
-                <td><span class="row-chip">Adaptability in Fast-Paced Environments</span></td>
-                <td><span class="row-chip">DAX · NodeJS · REST</span></td>
-                <td><span class="row-chip">Data Visualization</span></td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td data-label="Professional">
+                    <span class="row-chip">Stakeholder Communication</span>
+                  </td>
+                  <td data-label="Technical / Analytical">
+                    <span class="row-chip">Python</span>
+                  </td>
+                  <td data-label="Creative">
+                    <span class="row-chip">JavaScript</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td data-label="Professional">
+                    <span class="row-chip">Cross-Functional Collaboration</span>
+                  </td>
+                  <td data-label="Technical / Analytical">
+                    <span class="row-chip">C#</span>
+                  </td>
+                  <td data-label="Creative">
+                    <span class="row-chip">HTML</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td data-label="Professional">
+                    <span class="row-chip">Leadership Without Authority</span>
+                  </td>
+                  <td data-label="Technical / Analytical">
+                    <span class="row-chip">Java</span>
+                  </td>
+                  <td data-label="Creative">
+                    <span class="row-chip">CSS</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td data-label="Professional">
+                    <span class="row-chip">Strategic Decision-Making</span>
+                  </td>
+                  <td data-label="Technical / Analytical">
+                    <span class="row-chip">C</span>
+                  </td>
+                  <td data-label="Creative">
+                    <span class="row-chip">ReactJS</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td data-label="Professional">
+                    <span class="row-chip">Root Cause Analysis</span>
+                  </td>
+                  <td data-label="Technical / Analytical">
+                    <span class="row-chip">R</span>
+                  </td>
+                  <td data-label="Creative">
+                    <span class="row-chip">TypeScript</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td data-label="Professional">
+                    <span class="row-chip">Analytical Thinking</span>
+                  </td>
+                  <td data-label="Technical / Analytical">
+                    <span class="row-chip">SQL</span>
+                  </td>
+                  <td data-label="Creative">
+                    <span class="row-chip">Fusion360 CAD</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td data-label="Professional">
+                    <span class="row-chip">Ownership Mentality</span>
+                  </td>
+                  <td data-label="Technical / Analytical">
+                    <span class="row-chip">Unity3D Engine</span>
+                  </td>
+                  <td data-label="Creative">
+                    <span class="row-chip">Arduino</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td data-label="Professional">
+                    <span class="row-chip">Engineering Design</span>
+                  </td>
+                  <td data-label="Technical / Analytical">
+                    <span class="row-chip">Linux</span>
+                  </td>
+                  <td data-label="Creative">
+                    <span class="row-chip">Power BI</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td data-label="Professional">
+                    <span class="row-chip">Prioritization & Time Management</span>
+                  </td>
+                  <td data-label="Technical / Analytical">
+                    <span class="row-chip">Azure</span>
+                  </td>
+                  <td data-label="Creative">
+                    <span class="row-chip">Git</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td data-label="Professional">
+                    <span class="row-chip">Adaptability in Fast-Paced Environments</span>
+                  </td>
+                  <td data-label="Technical / Analytical">
+                    <span class="row-chip">DAX · NodeJS · REST</span>
+                  </td>
+                  <td data-label="Creative">
+                    <span class="row-chip">Data Visualization</span>
+                  </td>
+                </tr>
+              </tbody>
+
             </tbody>
           </table>
 
