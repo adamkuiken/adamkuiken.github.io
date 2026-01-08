@@ -50,6 +50,7 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
     }
+
     .nav-inner{
       width: 100%;
       max-width: var(--max);
@@ -60,12 +61,14 @@
       justify-content: space-between;
       gap: 14px;
     }
+
     .brand{
       display: flex;
       align-items: center;
       gap: 10px;
       min-width: 180px;
     }
+
     .brand-mark{
       width: 40px;
       height: 40px;
@@ -74,20 +77,31 @@
       box-shadow: var(--shadow);
       border: 1px solid rgba(233,240,236,0.18);
     }
+
     .brand-text{
       display: flex;
       flex-direction: column;
       line-height: 1.15;
     }
-    .brand-text strong{ font-size: 14px; letter-spacing: 0.4px; }
-    .brand-text span{ font-size: 12px; opacity: 0.9; }
 
+    .brand-text strong{
+      font-size: 14px;
+      letter-spacing: 0.4px;
+    }
+
+    .brand-text span{
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    /* Desktop menu (unchanged behavior) */
     .menu{
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
     }
+
     .menu button{
       appearance: none;
       border: 1px solid rgba(233,240,236,0.18);
@@ -102,12 +116,114 @@
       transition: 180ms ease;
       white-space: nowrap;
     }
+
     .menu button:hover{
       transform: translateY(-1px);
       border-color: rgba(171,133,9,0.55);
       background: rgba(171,133,9,0.12);
     }
-    .menu button:active{ transform: translateY(0px); }
+
+    .menu button:active{
+      transform: translateY(0px);
+    }
+
+    /* === Mobile hamburger additions === */
+    .nav-toggle{
+      display: none; /* shown only on mobile */
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(233,240,236,0.18);
+      background: rgba(233,240,236,0.06);
+      cursor: pointer;
+      transition: 180ms ease;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-toggle:hover{
+      border-color: rgba(171,133,9,0.55);
+      background: rgba(171,133,9,0.12);
+      transform: translateY(-1px);
+    }
+
+    .burger{
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 999px;
+      position: relative;
+      display: inline-block;
+      opacity: 0.95;
+    }
+
+    .burger::before,
+    .burger::after{
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 999px;
+    }
+
+    .burger::before{ top: -6px; }
+    .burger::after{ top: 6px; }
+
+    /* Mobile dropdown behavior */
+    @media (max-width: 860px){
+      .nav-inner{
+        position: relative;
+      }
+
+      .brand{
+        min-width: unset; /* allows brand + toggle to fit */
+      }
+
+      .nav-toggle{
+        display: inline-flex;
+      }
+
+      /* Replace horizontal menu with dropdown panel */
+      .menu{
+        position: absolute;
+        top: calc(var(--nav-h) - 6px);
+        right: 18px;
+        left: 18px;
+        display: none; /* hidden by default */
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px;
+        border-radius: var(--radius);
+        border: 1px solid rgba(233,240,236,0.16);
+        background: rgba(48, 92, 58, 0.92);
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow);
+      }
+
+      .menu button{
+        width: 100%;
+        padding: 12px 14px;
+        font-size: 13px;
+      }
+
+      /* When opened by JS, this class is added */
+      .menu.is-open{
+        display: flex;
+      }
+
+      /* Optional: subtle open animation */
+      .menu{
+        animation: menuPop 160ms ease;
+        transform-origin: top center;
+      }
+
+      @keyframes menuPop{
+        from{ opacity: 0; transform: translateY(-6px) scale(0.98); }
+        to{ opacity: 1; transform: translateY(0) scale(1); }
+      }
+    }
 
     /* LAYOUT */
     .container{
@@ -455,15 +571,22 @@
         </div>
       </div>
 
-      <nav class="menu" aria-label="Main navigation">
+      <!-- Mobile hamburger -->
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+        <span class="burger" aria-hidden="true"></span>
+      </button>
+
+      <nav id="navMenu" class="menu" aria-label="Main navigation">
         <button data-target="home">Home</button>
         <button data-target="about">About Me</button>
         <button data-target="career">My Career</button>
+        <button data-target="projects">Personal Projects</button>
         <button data-target="skills">My Skills</button>
         <button data-target="certifications">Certifications</button>
         <button data-target="contact">Get in Touch</button>
       </nav>
     </div>
+
   </header>
 
   <!-- HOME / HERO -->
@@ -728,6 +851,7 @@
   </main>
 
   <script>
+
     // Smooth scrolling with correct offset for sticky nav (works even if scroll-behavior is unsupported)
     const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
 
@@ -743,6 +867,46 @@
     });
 
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Handle scrolling buttons (nav + hero CTAs)
+    document.querySelectorAll('[data-target]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        scrollToId(btn.getAttribute('data-target'));
+
+        // Close mobile menu after selection
+        const menu = document.getElementById('navMenu');
+        const toggle = document.querySelector('.nav-toggle');
+        if(menu && menu.classList.contains('is-open')){
+          menu.classList.remove('is-open');
+          toggle?.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('navMenu');
+
+    if(toggle && menu){
+      toggle.addEventListener('click', () => {
+        const isOpen = menu.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Close on outside click
+      document.addEventListener('click', (e) => {
+        const t = e.target;
+        const clickedInside = menu.contains(t) || toggle.contains(t);
+        if(!clickedInside && menu.classList.contains('is-open')){
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+
   </script>
 </body>
 </html>
