@@ -595,6 +595,132 @@
       }
       .brand{ min-width: unset; }
     }
+
+    /* PROJECTS SECTION */
+    .projects-section .section-header {
+      margin-bottom: 1.25rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.25rem;
+    }
+
+    /* 2-up on desktop, 1-up on mobile */
+    .project-card {
+      grid-column: span 12;
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    @media (min-width: 900px) {
+      .project-card {
+        grid-column: span 6;
+      }
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.14);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.24);
+    }
+
+    /* Make image behave like a button/link */
+    .project-media {
+      display: block;
+      position: relative;
+      outline: none;
+    }
+
+    .project-media img {
+      display: block;
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      filter: saturate(1.05) contrast(1.02);
+      transition: transform 180ms ease, filter 180ms ease;
+    }
+
+    .project-card:hover .project-media img {
+      transform: scale(1.02);
+      filter: saturate(1.1) contrast(1.05);
+    }
+
+    .project-media:focus-visible {
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.55);
+      border-radius: 14px;
+    }
+
+    .project-content {
+      padding: 1rem 1rem 1.1rem;
+    }
+
+    .project-top {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-title {
+      margin: 0;
+      font-size: 1.05rem;
+      letter-spacing: 0.2px;
+    }
+
+    .project-desc {
+      margin: 0 0 0.9rem;
+      opacity: 0.9;
+      line-height: 1.45;
+      font-size: 0.96rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.28rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      opacity: 0.95;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .project-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .text-link {
+      text-decoration: none;
+      font-weight: 600;
+      opacity: 0.9;
+      transition: opacity 150ms ease, transform 150ms ease;
+    }
+
+    .text-link:hover {
+      opacity: 1;
+      transform: translateX(2px);
+    }
+
+    .text-link:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.55);
+      border-radius: 8px;
+    }
+
   </style>
 </head>
 
@@ -762,7 +888,7 @@
           <div class="career-row">
             <div class="career-media" style="background-image:url('assets/images/colaberry.png');"></div>
             <div class="career-text">
-              <h3>Digital Data Analytics Developer / Colaberry Inc.(Working with Major Energy Corporation)</h3>
+              <h3>Digital Data Analytics Developer / Colaberry Inc. (Working with Major Energy Corporation)</h3>
               <p>
                 • Developed organization-wide reporting and analytics solutions, enabling growth tracking and performance benchmarking.
                 • Aggregated corporate and industry data to deliver intuitive analytics, empowering long-term strategic decision-making.
@@ -772,6 +898,170 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section projects-section">
+      <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">A few Projects I have made over the years</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <a
+            class="project-media"
+            href="https://github.com/adamkuiken/Fusion360-pattern-Script"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Fusion360 Pattern Script in a new tab"
+          >
+            <img
+              src=" "
+              alt="Fusion360 Pattern Script"
+              loading="lazy"
+            />
+          </a>
+
+          <div class="project-content">
+            <div class="project-top">
+              <h3 class="project-title">Fusion360 Pattern Script</h3>
+              <div class="project-tags">
+                <span class="chip">Fusion 360</span>
+                <span class="chip">CAD</span>
+                <span class="chip">API Integration</span>
+              </div>
+            </div>
+
+            <p class="project-desc">
+              Utilized Fusion360 API and C# scripting to automate patterned cuts that enhanced additive manufacturing workflow efficiency.
+
+              Originally, I designed this to pattern-cut LEGOs so that I could turn any 3d model into a LEGO set!!!
+            </p>
+
+            <div class="project-links">
+              <a class="text-link" href="https://github.com/adamkuiken/Fusion360-pattern-Script" target="_blank" rel="noopener noreferrer">
+                View project →
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <a
+            class="project-media"
+            href="https://github.com/adamkuiken"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open ChatGPT Custom PowerBI Visual in a new tab"
+          >
+            <img
+              src=" "
+              alt="ChatGPT Custom PowerBI Visual"
+              loading="lazy"
+            />
+          </a>
+
+          <div class="project-content">
+            <div class="project-top">
+              <h3 class="project-title">ChatGPT Custom PowerBI Visual</h3>
+              <div class="project-tags">
+                <span class="chip">Power BI</span>
+                <span class="chip">Ai</span>
+                <span class="chip">Analytics</span>
+              </div>
+            </div>
+
+            <p class="project-desc">
+              Delivered a cutting-edge user engagement solution by integrating OpenAI API into a website and Power BI visual, improving user interaction with advanced chatbot capabilities and semantic analysis.
+            </p>
+
+            <div class="project-links">
+              <a class="text-link" href="https://github.com/adamkuiken" target="_blank" rel="noopener noreferrer">
+                View project →
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <a
+            class="project-media"
+            href="https://github.com/adamkuiken/city_map_vector_generator"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open City Map Vector Generator in a new tab"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1400&q=80"
+              alt="City Map Vector Generator"
+              loading="lazy"
+            />
+          </a>
+
+          <div class="project-content">
+            <div class="project-top">
+              <h3 class="project-title">City Map Vector Generator</h3>
+              <div class="project-tags">
+                <span class="chip">Python</span>
+                <span class="chip">GIS</span>
+                <span class="chip">Laser Engraving</span>
+              </div>
+            </div>
+
+            <p class="project-desc">
+              Developed a custom application that programmatically generates city maps as high-resolution vector graphics, enabling the creation of precision-cut, map-based art pieces using industrial laser-cutting equipment.
+            </p>
+
+            <div class="project-links">
+              <a class="text-link" href="https://github.com/adamkuiken/city_map_vector_generator" target="_blank" rel="noopener noreferrer">
+                View project →
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4
+        <article class="project-card">
+          <a
+            class="project-media"
+            href="https://your-project-4.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open Project 4 in a new tab"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1581091870622-7b84c0f6f4e2?auto=format&fit=crop&w=1400&q=80"
+              alt="Robotics prototype and simulation"
+              loading="lazy"
+            />
+          </a>
+
+          <div class="project-content">
+            <div class="project-top">
+              <h3 class="project-title">Simulation & Tracking Prototype</h3>
+              <div class="project-tags">
+                <span class="chip">Unity</span>
+                <span class="chip">Computer Vision</span>
+                <span class="chip">C#</span>
+              </div>
+            </div>
+
+            <p class="project-desc">
+              Prototyped real-time tracking + simulation workflows to validate control logic and improve iteration speed before hardware deployment.
+            </p>
+
+            <div class="project-links">
+              <a class="text-link" href="https://your-project-4.com" target="_blank" rel="noopener noreferrer">
+                View project →
+              </a>
+            </div>
+          </div>
+        </article> -->
       </div>
     </section>
 
