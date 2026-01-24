@@ -778,6 +778,63 @@
         height: 120px;
       }
     }
+    /* Standalone project gallery */
+    .gallery-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .gallery-tile{
+      display: block;
+      height: 220px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(233,240,236,0.18);
+      background-size: cover;
+      background-position: center;
+      background-color: rgba(233,240,236,0.06);
+      position: relative;
+      overflow: hidden;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .gallery-tile::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.05),
+        rgba(0,0,0,0.35)
+      );
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+
+    .gallery-tile:hover{
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-tile:hover::after{
+      opacity: 1;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 1000px){
+      .gallery-grid{
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px){
+      .gallery-grid{
+        grid-template-columns: 1fr;
+      }
+      .gallery-tile{
+        height: 260px;
+      }
+    }
 
   </style>
 </head>
@@ -1133,7 +1190,60 @@
 
       </div>
     </section>
-    
+    <!-- PROJECT GALLERY -->
+    <section id="project-gallery">
+      <div class="container">
+        <h2 class="section-title">Art Gallery</h2>
+        <p class="section-sub">
+          Some of the Art I have created recently
+        </p>
+
+        <div class="gallery-grid">
+          <a class="gallery-tile"
+            href="assets/images/mural.PNG"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="background-image:url('assets/images/mural.PNG');"
+            aria-label="View project image 1"></a>
+
+          <a class="gallery-tile"
+            href="assets/images/block1.jpeg"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="background-image:url('assets/images/block1.jpeg');"
+            aria-label="View project image 2"></a>
+
+          <a class="gallery-tile"
+            href="assets/images/board1.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="background-image:url('assets/images/board1.jpg');"
+            aria-label="View project image 3"></a>
+
+          <a class="gallery-tile"
+            href="assets/images/laserboard1.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="background-image:url('assets/images/laserboard1.jpg');"
+            aria-label="View project image 4"></a>
+
+          <a class="gallery-tile"
+            href="assets/images/multiboard1.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="background-image:url('assets/images/multiboard1.jpg');"
+            aria-label="View project image 5"></a>
+
+          <a class="gallery-tile"
+            href="assets/images/multiboard3.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="background-image:url('assets/images/multiboard3.jpg');"
+            aria-label="View project image 6"></a>
+        </div>
+      </div>
+    </section>
+
 
     <!-- MY SKILLS + CERTIFICATIONS -->
     <section id="skills">
