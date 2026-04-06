@@ -383,9 +383,10 @@
       height: 170px;
       border-radius: var(--radius);
       border: 1px solid rgba(233,240,236,0.18);
-      background-size: 90%;
+      background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
+      background-color: rgba(233,240,236,0.06);
       overflow: hidden;
       position: relative;
     }
@@ -644,9 +645,19 @@
       display: block;
       width: 100%;
       height: 190px;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center center;
+      background-color: rgba(233,240,236,0.06);
       filter: saturate(1.05) contrast(1.02);
       transition: transform 180ms ease, filter 180ms ease;
+    }
+
+    .project-image {
+      height: 190px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: rgba(233,240,236,0.06);
     }
 
     .project-card:hover .project-media img {
@@ -736,8 +747,9 @@
       height: 90px;
       border-radius: var(--radius-sm);
       border: 1px solid rgba(233,240,236,0.18);
-      background-size: cover;
+      background-size: contain;
       background-position: center;
+      background-repeat: no-repeat;
       background-color: rgba(233,240,236,0.06);
       position: relative;
       overflow: hidden;
@@ -793,7 +805,7 @@
       height: 220px;
       border-radius: var(--radius);
       border: 1px solid rgba(233,240,236,0.18);
-      background-size: cover;
+      background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
       background-color: rgba(233,240,236,0.06);
